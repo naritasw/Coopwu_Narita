@@ -6,7 +6,7 @@ export default function ControlCard({ title }) {
     const { control, handleSubmit } = useForm();
     const handleCreateUser = (data) => {
         console.log("data", data);
-    };    
+    };
     return (
         <div className='lg:w-3/4 '>
             <div className='my-1 font-semibold text-lg'>เพิ่มพนักงานใหม่</div>
@@ -30,7 +30,7 @@ export default function ControlCard({ title }) {
                             )}
                         />
                         <div>
-                            <Button type="submit" onClick={() => handleCreateUser(eachUser?._id)} >บันทึก</Button>
+                            <Button type="submit">บันทึก</Button>
                         </div>
                     </form>
                 </CardContent>

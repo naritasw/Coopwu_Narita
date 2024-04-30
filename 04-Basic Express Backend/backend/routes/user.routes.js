@@ -5,24 +5,34 @@ const User = require("../models/User");
 router.get("/", async (req, res) => {
     console.log("Find All Users");
     try {
-        const result = await User.find();
-        res.json({ rows: result });
+      const result = await User.find();
+      res.json({ rows: result });
     } catch (error) {
-        console.log("Error fetching users:", error);
-        res.status(404).json({ err: error.message });
+      res.status(404).json({ err: error });
     }
-});
+  });
+  
+  router.get("/:id", async (req, res) => {
+    console.log("Find All Users");
+    try {
+      const result = await User.findById(req?.params?.id);
+      res.json(result);
+    } catch (error) {
+      res.status(404).json({ err: error });
+    }
+  });
 
+  
 router.post("/", async (req, res) => {
     console.log("Create User Body", req.body);
     const newUser = new User(req.body);
     try {
-        await newUser.save({});
-        res.status(201).json(newUser);
+      await newUser.save({});
+      res.status(201).json(newUser);
     } catch (error) {
-        res.status(400).json({ err: error });
+      res.status(400).json({ err: error });
     }
-});
+  });
 
 router.put("/:id", async (req, res) => {
     const id = req.params.id;
